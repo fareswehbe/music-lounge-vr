@@ -28,3 +28,31 @@
   font-family: monospace;
   color: white;
 }
+
+#clapButton {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  padding: 10px 20px;
+  background-color: #4287f5;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  width:100px;
+}
+
+#booButton {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  z-index: 9999;
+  padding: 10px 20px;
+  background-color: #4287f5;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  width:100px;
+}

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Music Festival</title>
+    <meta name="description" content="Music Festival" />
+
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.4.0/socket.io.slim.js"></script>
+    <script src="/easyrtc/easyrtc.js"></script>
+    <script src="https://unpkg.com/networked-aframe@^0.9.0/dist/networked-aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-proxy-event-component/dist/aframe-proxy-event-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="/js/joystick.min.js"></script>
+    <script src="/js/upload-mp3.js"></script>
+    <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
+    <script src="/js/tap-to-teleport.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
+    <script>
+      // see issue https://github.com/networked-aframe/networked-aframe/issues/267
+      NAF.schemas.getComponentsOriginal = NAF.schemas.getComponents;
+      NAF.schemas.getComponents = (template) => {
+        if (!NAF.schemas.hasTemplate("#avatar-template")) {
+          NAF.schemas.add({
+            template: "#avatar-template",
+            components: [
+              "position",
+              "rotation",
+              {
+                selector: ".head",
+                component: "material",
+                property: "color",
+              },
+            ],
+          });
+        }
+        const components = NAF.schemas.getComponentsOriginal(template);
+        return components;
+      };
+    </script>
+    <script src="https://unpkg.com/aframe-randomizer-components@^3.0.1/dist/aframe-randomizer-components.min.js"></script>
+    <script src="/js/spawn-in-circle.component.js"></script>
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+  </head>
+  <body>
+    <button id="clapButton">Clap</button>
+    <button id="booButton">Boo</button>
+    <a-scene
+      physics="debug: true"
+      joystick
+      networked-scene="
+      room: basic-audio;
+      debug: true;
+      adapter: easyrtc;
+      audio: false;
+    "
+    >
+      <!-- loading assets-->
+      <a-assets>
+        <a-asset-item
+          id="basket"
+          src="https://cdn.glitch.global/85c48b28-9626-4b15-a925-e0bd3899442f/basket.glb?v=1650111717996"
+        ></a-asset-item>
+        <a-asset-item
+          id="combo"
+          src="https://cdn.glitch.global/85c48b28-9626-4b15-a925-e0bd3899442f/combo.glb?v=1650111731445"
+        ></a-asset-item>
+        <a-asset-item
+          id="barbecue"
+          src="https://cdn.glitch.global/85c48b28-9626-4b15-a925-e0bd3899442f/barbecue.glb?v=1650117482437"
+        ></a-asset-item>
+        <a-asset-item
+          id="btree"
+          src="https://cdn.glitch.global/87012bd5-a4bf-45cf-80ee-67e5ced56e30/blossom%20tree.glb?v=1650127999644"
+        ></a-asset-item>
+        <a-asset-item
+          id="btree2"
+          src="https://cdn.glitch.global/87012bd5-a4bf-45cf-80ee-67e5ced56e30/blossom%20tree%202.glb?v=1650127998960"
+        ></a-asset-item>
+        <a-asset-item
+          id="island"
+          src="https://cdn.glitch.global/87012bd5-a4bf-45cf-80ee-67e5ced56e30/island.glb?v=1650139244832"
+        ></a-asset-item>
+        <a-asset-item
+          id="rock1"
+          src="https://cdn.glitch.global/87012bd5-a4bf-45cf-80ee-67e5ced56e30/rock1.glb?v=1650139244757"
+        ></a-asset-item>
+        <a-asset-item
+          id="rock2"
+          src="https://cdn.glitch.global/87012bd5-a4bf-45cf-80ee-67e5ced56e30/rock2.glb?v=1650139246830"
+        ></a-asset-item>
+        <a-asset-item
+          id="rock3"
+          src="https://cdn.glitch.global/87012bd5-a4bf-45cf-80ee-67e5ced56e30/rock3.glb?v=1650139248848"
+        ></a-asset-item>
+        <a-asset-item
+          id="koi"
+          src="https://cdn.glitch.global/87012bd5-a4bf-45cf-80ee-67e5ced56e30/koi.glb?v=1650135076178"
+        ></a-asset-item>
+        <a-img
+          id="road"
+          src="https://cdn.glitch.global/87012bd5-a4bf-45cf-80ee-67e5ced56e30/TexturesCom_Road_StairsMedievalMossy_4x4_512_albedo%5B7219%5D.jpg?v=1650135049854"
+        />
+        <a-img
+          id="roadnm"
+          src="https://cdn.glitch.global/87012bd5-a4bf-45cf-80ee-67e5ced56e30/NormalMap%202.jpg?v=1650135049006"
+        />
+        <img
+          id="grass"
+          src="https://cdn.glitch.global/87012bd5-a4bf-45cf-80ee-67e5ced56e30/Grass_001_COLOR.jpg?v=1650141110161"
+        />
+        <img
+          id="grassnm"
+          src="https://cdn.glitch.global/87012bd5-a4bf-45cf-80ee-67e5ced56e30/Grass_001_NORM.jpg?v=1650141107499"
+        />
+        <audio
+          id="lake"
+          src="https://cdn.glitch.global/87012bd5-a4bf-45cf-80ee-67e5ced56e30/lake.mp3?v=1650219325032"
+          preload="true"
+        ></audio>
+
+        <!-- Define the piano notes as audio assets -->
+        <audio
+          id="pianonote1"
+          src="https://cdn.glitch.global/f3d8a574-35e4-4e8a-9b01-36a9b5d42679/Bb2.mp3?v=1699460559857"
+        ></audio>
+        <audio
+          id="pianonote2"
+          src="https://cdn.glitch.global/f3d8a574-35e4-4e8a-9b01-36a9b5d42679/Eb2.mp3?v=1699460560116"
+        ></audio>
+        <audio
+          id="pianonote3"
+          src="https://cdn.glitch.global/f3d8a574-35e4-4e8a-9b01-36a9b5d42679/B1.mp3?v=1699460567545"
+        ></audio>
+        <!-- Define the drum notes as audio assets -->
+        <audio
+          id="drumnote1"
+          src="https://cdn.glitch.global/f3d8a574-35e4-4e8a-9b01-36a9b5d42679/sounds_tom-4.mp3?v=1699462587216"
+        ></audio>
+        <audio
+          id="drumnote2"
+          src="https://cdn.glitch.global/f3d8a574-35e4-4e8a-9b01-36a9b5d42679/sounds_kick-bass.mp3?v=1699462589786"
+        ></audio>
+        <audio
+          id="drumnote3"
+          src="https://cdn.glitch.global/f3d8a574-35e4-4e8a-9b01-36a9b5d42679/sounds_snare.mp3?v=1699462593131"
+        ></audio>
+
+        <!--insert some ss of the 3 environments-->
+        <img
+          id="TherapyRoom"
+          src="https://cdn.glitch.global/87012bd5-a4bf-45cf-80ee-67e5ced56e30/screenshot-theravr%20therapy%20room-1650178327951-min.png?v=1650178800592"
+        />
+
+        <!-- Templates -->
+
+        <!-- Avatar -->
+        <template id="avatar-template">
+          <a-entity class="avatar">
+            <a-sphere class="head" scale="0.3 0.3 0.3"></a-sphere>
+
+            <a-entity class="face" position="0 0.05 0">
+              <a-sphere
+                class="eye"
+                color="#efefef"
+                position="-0.10514 0 -0.224"
+                scale="0.08 0.08 0.08"
+              >
+                <a-sphere
+                  class="pupil"
+                  color="#000"
+                  position="0 0 -0.874"
+                  scale="0.2 0.2 0.2"
+                ></a-sphere>
+              </a-sphere>
+
+              <a-sphere
+                class="eye"
+                color="#efefef"
+                position="0.10514 0 -0.224"
+                scale="0.08 0.08 0.08"
+              >
+                <a-sphere
+                  class="pupil"
+                  color="#000"
+                  position="0 0 -.874"
+                  scale="0.2 0.2 0.2"
+                ></a-sphere>
+              </a-sphere>
+            </a-entity>
+
+            <a-cone
+              class="body"
+              geometry="segmentsHeight: 8; segmentsRadial: 8"
+              rotation="180 0 0"
+              position="0 -0.72 0"
+              scale="0.35 0.8 0.35"
+            >
+              <a-sphere
+                class="arm"
+                scale="0.23 0.37 0.24"
+                position="-1.094 -0.111 0"
+                rotation="0 0 14"
+              ></a-sphere>
+
+              <a-sphere
+                class="arm"
+                scale="0.23 0.37 0.24"
+                position="1.094 -0.111 0"
+                rotation="0 0 -14"
+              ></a-sphere>
+            </a-cone>
+          </a-entity>
+        </template>
+      </a-assets>
+
+      <!--SCENE-->
+      <!--player entity-->
+      <a-entity
+        id="player"
+        camera
+        networked="template:#avatar-template;attachTemplateToLocal:false;"
+        position="0 1.6 0"
+        spawn-in-circle="radius:2"
+        wasd-controls
+        look-controls
+      >
+        <a-entity
+          position="0.1 -0.1 0"
+          touch-listener
+          teleport-controls="cameraRig: #player;
+              teleportOrigin: #head;
+              startEvents:starttouch;
+              endEvents:endtouch;
+              curveShootingSpeed:15;
+              hitCylinderRadius:1;
+              collisionEntities: [ground]"
+        >
+        </a-entity>
+        <a-entity
+          cursor
+          position="0 0 -1"
+          geometry="primitive: sphere; radius: 0.008;"
+          material="color: beige; shader:flat; opacity:0.8"
+          animation__click="property:scale;
+                                    startEvents: click;
+                                    easing: ;
+                                    dur: 150;
+                                    from: 0.1 0.1 0.1; to: 1 1 1;"
+          animation__fusing="property: scale; 
+                                     startEvents: fusing; 
+                                     easing: easeInCubic; 
+                                     dur: 1500; 
+                                     from: 1 1 1; to: 3 3 3"
+        >
+        </a-entity>
+        <a-sphere
+          class="head"
+          id="head"
+          visible="false"
+          random-color
+        ></a-sphere>
+      </a-entity>
+
+      <!--instructions-->
+      <a-entity
+        geometry="primitive: plane; height: 1.2; width: 1.69"
+        rotation="0 0 9.94548166853309e-17"
+        material="color: #724061; side: double"
+        position="11.63329 1.7 -7.98269"
+        scale="1 1 0.05"
+        look-at="#player"
+      >
+        <a-entity
+          position="0 0.45168 0.01693"
+          text="align: center; color: #e0d8e8; value: Pink Picnic; width: 5.07"
+        ></a-entity>
+        <a-entity
+          position="0.00012 0.13027 0.02043"
+          text="align: center; color: #e0d8e8; value: have a stroll down the cherry blossom path and watch the koi in the lake; width: 2.55"
+        ></a-entity>
+        <a-entity
+          position="0 -0.19324 0.03636"
+          text="align: center; color: #e0d8e8; value: look/click at the paintings to traverse to a peaceful environment; width: 2.31; wrapCount: 45.35"
+        ></a-entity>
+        <a-entity
+          position="0 -0.44601 0.09321"
+          text="align: center; color: #e0d8e8; value: We hope you find the peace you have been looking for; width: 2.6"
+        ></a-entity>
+      </a-entity>
+
+      <!--links full-->
+      <!--link 3 index-->
+      <a-entity
+        position="-1.842 1.7 -8.194"
+        event-set__mouseenter="scale: 1.15 1.15 1"
+        event-set__mouseleave="scale: 1 1 1"
+      >
+        <!--border-->
+        <a-entity
+          id="border3"
+          geometry="primitive: plane"
+          scale="1.25 0.85 1"
+          material="color:##ffffff"
+          event-set__mouseenter="material.color:#00ff2a;"
+          event-set__mouseleave="material.color:#ffffff"
+        ></a-entity>
+        <!--link-->
+        <a-entity
+          id="linkToTR"
+          geometry="primitive: plane"
+          link="href: index.html; image: #TherapyRoom"
+          material="shader: portal; side: double; pano: #TherapyRoom"
+          position="0 0 0.01"
+          scale="1.2 .8 1"
+          event-set__mouseenter="material.color:#00ff2a; _target:#border3"
+          event-set__mouseleave="material.color:#ffffff; _target:#border3"
+        >
+        </a-entity>
+        <a-entity
+          position="0 -0.55 0"
+          text="align: center; color: #a8a8a8; font: roboto; value: Ticket Booth; width: 5"
+          scale="0.75 0.75 1"
+        >
+          <a-entity
+            id="textborder3"
+            geometry="primitive: plane; height:0.24; width:1.5;"
+            position="0 -0.02 0"
+            material="color:#000000"
+          ></a-entity>
+        </a-entity>
+      </a-entity>
+
+      <!--environment-->
+      <!--ground-->
+      <a-plane
+        position="0 -0.05 0"
+        rotation="-90 0 0"
+        width="40"
+        height="250"
+        material="src:#grass;
+                  repeat: 10 60;
+                  normalMap:#grassnm;
+                  normalTextureRepeat:10 60;"
+      ></a-plane>
+
+      <a-sky
+        radius="200"
+        theta-length="110"
+        class="environment"
+        material="shader: skyshader; sunPosition: 7.760 8.770 -8.240"
+        geometry=""
+      ></a-sky>
+
+      <!--components-->
+
+      <a-entity>
+        <!-- Sphere for buying a normal ticket -->
+        <a-entity position="-2 1 -3">
+          <a-sphere
+            id="normal-ticket"
+            radius="0.25"
+            position="0 0 0"
+            color="blue"
+          ></a-sphere>
+          <a-entity
+            position="0 -0.55 0"
+            text="align: center; color: #a8a8a8; font: roboto; value: Buy Audience Ticket; width: 5"
+            scale="0.75 0.75 1"
+          >
+            <a-entity
+              id="textborder3"
+              geometry="primitive: plane; height:0.24; width:2;"
+              position="0 -0.02 0"
+              material="color:#000000"
+            ></a-entity>
+          </a-entity>
+        </a-entity>
+        <!-- Sphere for registering as a musician -->
+        <a-entity position="2 1 -3">
+          <a-sphere
+            id="musician-registration"
+            radius="0.25"
+            position="0 0 0"
+            color="red"
+          ></a-sphere>
+          <a-entity
+            position="0 -0.55 0"
+            text="align: center; color: #a8a8a8; font: roboto; value: Get Stage Pass; width: 5"
+            scale="0.75 0.75 1"
+          >
+            <a-entity
+              id="textborder3"
+              geometry="primitive: plane; height:0.24; width:1.7;"
+              position="0 -0.02 0"
+              material="color:#000000"
+            ></a-entity>
+          </a-entity>
+        </a-entity>
+      </a-entity>
+
+      <!-- Music buttons -->
+      <a-entity position="-1 1.5 5">
+        <a-box color="red" position="-1 0 0" onClick="playNote1()"></a-box>
+        <a-box color="green" position="0 0 0" onClick="playNote2()"></a-box>
+        <a-box color="blue" position="1 0 0" onClick="playNote3()"></a-box>
+        <a-box
+          color="orange"
+          position="0 -1 0"
+          onClick="switchToDrums()"
+        ></a-box>
+      </a-entity>
+
+      <!-- DJ button -->
+      <a-scene>
+        <a-entity
+          id="uploadButton"
+          geometry="primitive: box"
+          material="color: #FF5722"
+          position="3 1.5 5"
+          text="value: Upload MP3"
+          upload-handler
+        ></a-entity>
+        <a-entity id="audioPlayer" sound="src: #uploadedAudio"></a-entity>
+      </a-scene>
+
+      <!-- Invisible walls -->
+      <a-plane
+        id="normal-audience-wall"
+        position="10 0 -6"
+        width="5"
+        height="5"
+        material="visible: true"
+        visible="true"
+        material="src:#grass;
+                  repeat: 10 60;
+                  normalMap:#grassnm;
+                  normalTextureRepeat:10 60;"
+      ></a-plane>
+      <a-plane
+        id="musician-wall"
+        position="0 0 -6"
+        width="5"
+        height="5"
+        material="visible: true"
+        visible="true"
+        material="src:#grass;
+                  repeat: 10 60;
+                  normalMap:#grassnm;
+                  normalTextureRepeat:10 60;"
+      ></a-plane>
+    </a-scene>
+
+    <script>
+      const normalTicket = document.querySelector("#normal-ticket");
+      const musicianRegistration = document.querySelector(
+        "#musician-registration"
+      );
+      const normalAudienceWall = document.querySelector(
+        "#normal-audience-wall"
+      );
+      const musicianWall = document.querySelector("#musician-wall");
+      let isMusician = false;
+
+      normalTicket.addEventListener("click", () => {
+        isMusician = false;
+        updateWalls();
+      });
+
+      musicianRegistration.addEventListener("click", () => {
+        isMusician = true;
+        updateWalls();
+      });
+
+      function updateWalls() {
+        if (isMusician) {
+          normalAudienceWall.setAttribute("visible", "false");
+          normalAudienceWall.setAttribute(
+            "collision-filter",
+            "group: nevercollide"
+          );
+          musicianWall.setAttribute("visible", "true");
+          musicianWall.setAttribute("collision-filter", "group: player");
+        } else {
+          normalAudienceWall.setAttribute("visible", "true");
+          normalAudienceWall.setAttribute("collision-filter", "group: player");
+          musicianWall.setAttribute("visible", "false");
+          musicianWall.setAttribute("collision-filter", "group: nevercollide");
+        }
+      }
+    </script>
+
+    <div class="actions">
+      <button id="mic-btn" type="button" class="button">
+        Press to Mute Mic
+      </button>
+    </div>
+
+    <script>
+      // Mic status
+      let micEnabled = false;
+      // Mic button ele
+      const micBtnEle = document.getElementById("mic-btn");
+      // On mobile remove elements that are resource heavy
+      const isMobile = AFRAME.utils.device.isMobile();
+
+      if (isMobile) {
+        const particles = document.getElementById("particles");
+        particles.parentNode.removeChild(particles);
+      }
+
+      // Called by Networked-Aframe when connected to server
+      function onConnect() {
+        console.log("onConnect", new Date());
+
+        // Handle mic button click (Mute and Unmute)
+        micBtnEle.addEventListener("click", function () {
+          NAF.connection.adapter.enableMicrophone(!micEnabled);
+          micEnabled = !micEnabled;
+          micBtnEle.textContent = micEnabled
+            ? "Press to Mute Mic"
+            : "Press to Unmute Mic";
+        });
+      }
+    </script>
+
+    <script>
+      var isPiano = true; // Track the current instrument
+
+      function switchToDrums() {
+        isPiano = !isPiano; // Toggle the instrument
+      }
+
+      function playNote1() {
+        if (isPiano) {
+          var audio = document.querySelector("#pianonote1");
+          audio.play();
+        } else {
+          var audio = document.querySelector("#drumnote1");
+          audio.play();
+        }
+      }
+
+      function playNote2() {
+        if (isPiano) {
+          var audio = document.querySelector("#pianonote2");
+          audio.play();
+        } else {
+          var audio = document.querySelector("#drumnote2");
+          audio.play();
+        }
+      }
+
+      function playNote3() {
+        if (isPiano) {
+          var audio = document.querySelector("#pianonote3");
+          audio.play();
+        } else {
+          var audio = document.querySelector("#drumnote3");
+          audio.play();
+        }
+      }
+    </script>
+    <!-- Reaction Buttons -->
+    <script>
+      var clapButton = document.getElementById("clapButton");
+      var booButton = document.getElementById("booButton");
+
+      clapButton.addEventListener("click", function () {
+        var audio = new Audio("https://cdn.glitch.global/f3d8a574-35e4-4e8a-9b01-36a9b5d42679/solo-clap-90129.mp3?v=1699469362875");
+        audio.play();
+      });
+      booButton.addEventListener("click", function () {
+        var audio = new Audio("https://cdn.glitch.global/f3d8a574-35e4-4e8a-9b01-36a9b5d42679/boo-6377.mp3?v=1699469361825");
+        audio.play();
+      });
+    </script>
+  </body>
+</html>
