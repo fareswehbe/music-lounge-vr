@@ -435,19 +435,77 @@
       <!-- Invisible walls -->
       <a-box
         static-body
-        id="normal-audience-wall"
-        color="blue"
-        position="10 0 0"
-        width="5"
+        id="normal-audience-wall-1"
+        material="opacity: 0.0; transparent: true"
+        position="0 0 0"
+        width="25"
         height="15"
         depth="0.01"
       ></a-box>
       <a-box
         static-body
-        id="musician-wall"
-        color="blue"
+        id="normal-audience-wall-2"
+        material="opacity: 0.0; transparent: true"
+        position="0 0 50"
+        width="25"
+        height="15"
+        depth="0.01"
+      ></a-box>
+      <a-box
+        static-body
+        id="normal-audience-wall-3"
+        material="opacity: 0.0; transparent: true"
+        position="-12.5 0 25"
+        rotation="0 90 0"
+        width="50"
+        height="15"
+        depth="0.01"
+      ></a-box>
+      <a-box
+        static-body
+        id="normal-audience-wall-4"
+        material="opacity: 0.0; transparent: true"
+        position="12.5 0 25"
+        rotation="0 90 0"
+        width="50"
+        height="15"
+        depth="0.01"
+      ></a-box>
+      <a-box
+        static-body
+        id="musician-wall-1"
+        material="opacity: 0.0; transparent: true"
         position="0 0 0"
-        width="5"
+        width="25"
+        height="15"
+        depth="0.01"
+      ></a-box>
+      <a-box
+        static-body
+        id="musician-wall-2"
+        material="opacity: 0.0; transparent: true"
+        position="0 0 -10"
+        width="25"
+        height="15"
+        depth="0.01"
+      ></a-box>
+      <a-box
+        static-body
+        id="musician-wall-3"
+        material="opacity: 0.0; transparent: true"
+        position="12.5 0 -5"
+        rotation="0 90 0"
+        width="10"
+        height="15"
+        depth="0.01"
+      ></a-box>
+      <a-box
+        static-body
+        id="musician-wall-4"
+        material="opacity: 0.0; transparent: true"
+        position="-12.5 0 -5"
+        rotation="0 90 0"
+        width="10"
         height="15"
         depth="0.01"
       ></a-box>
@@ -593,7 +651,7 @@
         >
           <a-entity
             position="0 0.2 -0.2"
-            text="align: center; color: #a8a8a8; font: roboto; value: Stage Pass; width: 3"
+            text="align: center; color: #a8a8a8; font: roboto; value: Buy Ticket; width: 3"
             scale="0.75 0.75 1"
           >
             <a-entity
@@ -617,7 +675,7 @@
                                    animation.to: -0.5 1 0.25;"
           ><a-entity
             position="0 0.2 -0.2"
-            text="align: center; color: #a8a8a8; font: roboto; value: Buy Ticket; width: 3"
+            text="align: center; color: #a8a8a8; font: roboto; value: Stage Pass; width: 3"
             scale="0.75 0.75 1"
           >
             <a-entity
@@ -671,10 +729,22 @@
       const musicianRegistration = document.querySelector(
         "#musician-registration"
       );
-      const normalAudienceWall = document.querySelector(
-        "#normal-audience-wall"
+      const normalAudienceWall1 = document.querySelector(
+        "#normal-audience-wall-1"
       );
-      const musicianWall = document.querySelector("#musician-wall");
+      const normalAudienceWall2 = document.querySelector(
+        "#normal-audience-wall-2"
+      );
+      const normalAudienceWall3 = document.querySelector(
+        "#normal-audience-wall-3"
+      );
+      const normalAudienceWall4 = document.querySelector(
+        "#normal-audience-wall-4"
+      );
+      const musicianWall1 = document.querySelector("#musician-wall-1");
+      const musicianWall2 = document.querySelector("#musician-wall-2");
+      const musicianWall3 = document.querySelector("#musician-wall-3");
+      const musicianWall4 = document.querySelector("#musician-wall-4");
       let isMusician = false;
 
       normalTicket.addEventListener("click", () => {
@@ -689,11 +759,23 @@
 
       function updateWalls() {
         if (isMusician) {
-          normalAudienceWall.removeAttribute("static-body");
-          musicianWall.setAttribute("static-body", "");
+          normalAudienceWall1.removeAttribute("static-body");
+          normalAudienceWall2.removeAttribute("static-body");
+          normalAudienceWall3.removeAttribute("static-body");
+          normalAudienceWall4.removeAttribute("static-body");
+          musicianWall1.setAttribute("static-body", "");
+          musicianWall2.setAttribute("static-body", "");
+          musicianWall3.setAttribute("static-body", "");
+          musicianWall4.setAttribute("static-body", "");
         } else {
-          normalAudienceWall.setAttribute("static-body", "");
-          musicianWall.removeAttribute("static-body");
+          normalAudienceWall1.setAttribute("static-body", "");
+          normalAudienceWall2.setAttribute("static-body", "");
+          normalAudienceWall3.setAttribute("static-body", "");
+          normalAudienceWall4.setAttribute("static-body", "");
+          musicianWall1.removeAttribute("static-body");
+          musicianWall2.removeAttribute("static-body");
+          musicianWall3.removeAttribute("static-body");
+          musicianWall4.removeAttribute("static-body");
         }
       }
     </script>
