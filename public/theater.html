@@ -63,66 +63,29 @@
       <a-assets>
         <video id="video" autoplay loop crossorigin="anonymous"></video>
         <a-asset-item
-          id="basket"
-          src="https://cdn.glitch.global/85c48b28-9626-4b15-a925-e0bd3899442f/basket.glb?v=1650111717996"
+          id="stage-model"
+          src="https://cdn.glitch.global/f3d8a574-35e4-4e8a-9b01-36a9b5d42679/simple_concert_stage.glb?v=1701883409492"
         ></a-asset-item>
         <a-asset-item
-          id="combo"
-          src="https://cdn.glitch.global/85c48b28-9626-4b15-a925-e0bd3899442f/combo.glb?v=1650111731445"
+          id="kiosk-model"
+          src="https://cdn.glitch.global/f3d8a574-35e4-4e8a-9b01-36a9b5d42679/simple_90s_kiosk.glb?v=1701891884417"
         ></a-asset-item>
         <a-asset-item
-          id="barbecue"
-          src="https://cdn.glitch.global/85c48b28-9626-4b15-a925-e0bd3899442f/barbecue.glb?v=1650117482437"
+          id="ticket-model"
+          src="https://cdn.glitch.global/f3d8a574-35e4-4e8a-9b01-36a9b5d42679/ticket.glb?v=1701892089150"
         ></a-asset-item>
         <a-asset-item
-          id="btree"
-          src="https://cdn.glitch.global/87012bd5-a4bf-45cf-80ee-67e5ced56e30/blossom%20tree.glb?v=1650127999644"
+          id="vip-model"
+          src="https://cdn.glitch.global/f3d8a574-35e4-4e8a-9b01-36a9b5d42679/keys_and_bus_card..glb?v=1701892265901"
         ></a-asset-item>
-        <a-asset-item
-          id="btree2"
-          src="https://cdn.glitch.global/87012bd5-a4bf-45cf-80ee-67e5ced56e30/blossom%20tree%202.glb?v=1650127998960"
-        ></a-asset-item>
-        <a-asset-item
-          id="island"
-          src="https://cdn.glitch.global/87012bd5-a4bf-45cf-80ee-67e5ced56e30/island.glb?v=1650139244832"
-        ></a-asset-item>
-        <a-asset-item
-          id="rock1"
-          src="https://cdn.glitch.global/87012bd5-a4bf-45cf-80ee-67e5ced56e30/rock1.glb?v=1650139244757"
-        ></a-asset-item>
-        <a-asset-item
-          id="rock2"
-          src="https://cdn.glitch.global/87012bd5-a4bf-45cf-80ee-67e5ced56e30/rock2.glb?v=1650139246830"
-        ></a-asset-item>
-        <a-asset-item
-          id="rock3"
-          src="https://cdn.glitch.global/87012bd5-a4bf-45cf-80ee-67e5ced56e30/rock3.glb?v=1650139248848"
-        ></a-asset-item>
-        <a-asset-item
-          id="koi"
-          src="https://cdn.glitch.global/87012bd5-a4bf-45cf-80ee-67e5ced56e30/koi.glb?v=1650135076178"
-        ></a-asset-item>
-        <a-img
-          id="road"
-          src="https://cdn.glitch.global/87012bd5-a4bf-45cf-80ee-67e5ced56e30/TexturesCom_Road_StairsMedievalMossy_4x4_512_albedo%5B7219%5D.jpg?v=1650135049854"
-        />
-        <a-img
-          id="roadnm"
-          src="https://cdn.glitch.global/87012bd5-a4bf-45cf-80ee-67e5ced56e30/NormalMap%202.jpg?v=1650135049006"
-        />
         <img
           id="grass"
-          src="https://cdn.glitch.global/87012bd5-a4bf-45cf-80ee-67e5ced56e30/Grass_001_COLOR.jpg?v=1650141110161"
+          src="https://cdn.glitch.global/f3d8a574-35e4-4e8a-9b01-36a9b5d42679/asphalt-texture.jpg?v=1701886286378"
         />
         <img
           id="grassnm"
-          src="https://cdn.glitch.global/87012bd5-a4bf-45cf-80ee-67e5ced56e30/Grass_001_NORM.jpg?v=1650141107499"
+          src="https://cdn.glitch.global/f3d8a574-35e4-4e8a-9b01-36a9b5d42679/ground-nm%20(1).jpg?v=1701887195470"
         />
-        <audio
-          id="lake"
-          src="https://cdn.glitch.global/87012bd5-a4bf-45cf-80ee-67e5ced56e30/lake.mp3?v=1650219325032"
-          preload="true"
-        ></audio>
 
         <!-- Define the piano notes as audio assets -->
         <audio
@@ -225,8 +188,8 @@
         id="player"
         camera
         networked="template:#avatar-template;attachTemplateToLocal:false;"
-        position="0 1.5 0"
-        spawn-in-circle="radius:2"
+        position="25 1.5 10"
+        spawn-in-circle="radius:1"
         wasd-controls
         look-controls
         jump-ability
@@ -274,32 +237,33 @@
         geometry="primitive: plane; height: 1.2; width: 1.69"
         rotation="0 0 9.94548166853309e-17"
         material="color: #724061; side: double"
-        position="11.63329 1.7 -7.98269"
+        position="27.5 1.5 3.5"
         scale="1 1 0.05"
         look-at="#player"
       >
         <a-entity
           position="0 0.45168 0.01693"
-          text="align: center; color: #e0d8e8; value: Pink Picnic; width: 5.07"
+          text="align: center; color: #e0d8e8; value: Ticket Booth; width: 5.07"
         ></a-entity>
         <a-entity
           position="0.00012 0.13027 0.02043"
-          text="align: center; color: #e0d8e8; value: have a stroll down the cherry blossom path and watch the koi in the lake; width: 2.55"
+          text="align: center; color: #e0d8e8; value: Please buy a ticket or stage pass; width: 2.55"
         ></a-entity>
         <a-entity
           position="0 -0.19324 0.03636"
-          text="align: center; color: #e0d8e8; value: look/click at the paintings to traverse to a peaceful environment; width: 2.31; wrapCount: 45.35"
+          text="align: center; color: #e0d8e8; value: Ticket = 10$; width: 2.31; wrapCount: 45.35"
         ></a-entity>
         <a-entity
           position="0 -0.44601 0.09321"
-          text="align: center; color: #e0d8e8; value: We hope you find the peace you have been looking for; width: 2.6"
+          text="align: center; color: #e0d8e8; value: Stage Pass = 20$; width: 2.6"
         ></a-entity>
       </a-entity>
 
       <!--links full-->
       <!--link 3 index-->
       <a-entity
-        position="-1.842 1.7 -8.194"
+        position="30 1.5 10"
+        rotation="0 -90 0"
         event-set__mouseenter="scale: 1.15 1.15 1"
         event-set__mouseleave="scale: 1 1 1"
       >
@@ -344,13 +308,19 @@
         static-body
         position="0 -0.05 0"
         rotation="-90 0 0"
-        width="40"
+        width="80"
         height="250"
         material="src:#grass;
                   repeat: 10 60;
                   normalMap:#grassnm;
                   normalTextureRepeat:10 60;"
       ></a-plane>
+
+      <a-entity
+        position="0 1.5 0"
+        gltf-model="#stage-model"
+        scale="0.01 0.01 0.01"
+      ></a-entity>
 
       <a-sky
         radius="200"
@@ -361,52 +331,6 @@
       ></a-sky>
 
       <!--components-->
-
-      <!-- <a-entity>
-        Sphere for buying a normal ticket -->
-      <!-- <a-entity position="-2 1 -3">
-          <a-sphere
-            id="normal-ticket"
-            radius="0.25"
-            position="0 0 0"
-            color="blue"
-          ></a-sphere>
-          <a-entity
-            position="0 -0.55 0"
-            text="align: center; color: #a8a8a8; font: roboto; value: Buy Audience Ticket; width: 5"
-            scale="0.75 0.75 1"
-          >
-            <a-entity
-              id="textborder3"
-              geometry="primitive: plane; height:0.24; width:2;"
-              position="0 -0.02 0"
-              material="color:#000000"
-            ></a-entity>
-          </a-entity>
-        </a-entity> -->
-      <!-- Sphere for registering as a musician -->
-      <!-- <a-entity position="2 1 -3">
-          <a-sphere
-            id="musician-registration"
-            radius="0.25"
-            position="0 0 0"
-            color="red"
-          ></a-sphere>
-          <a-entity
-            position="0 -0.55 0"
-            text="align: center; color: #a8a8a8; font: roboto; value: Get Stage Pass; width: 5"
-            scale="0.75 0.75 1"
-          >
-            <a-entity
-              id="textborder3"
-              geometry="primitive: plane; height:0.24; width:1.7;"
-              position="0 -0.02 0"
-              material="color:#000000"
-            ></a-entity>
-          </a-entity>
-        </a-entity>
-      </a-entity> -->
-
       <!-- Music buttons -->
       <a-entity position="-1 1.5 5">
         <a-box color="red" position="-1 0 0" onClick="playNote1()"></a-box>
@@ -563,12 +487,12 @@
       ></a-box>
 
       <!-- Ticketing Booth -->
-      <a-entity position="15 0 -5">
+      <a-entity position="25 0 0" gltf-model="#kiosk-model" scale="1 1 1">
         <a-entity
           class="avatar"
-          position="0 1.6 -1.5"
+          position="0 1.6 1.5"
           animation__position="property: position; 
-                                to: 0 1.8 -1.5; 
+                                to: 0 1.8 1.5; 
                                 dur: 3000;
                                 dir: alternate;
                                 easing: easeInOutSine; 
@@ -628,17 +552,11 @@
             ></a-sphere>
           </a-cone>
         </a-entity>
-        <a-box
-          position="0 0 0"
-          width="2"
-          height="2"
-          depth="1"
-          color="#AAAAAA"
-        ></a-box>
+
         <!-- Buttons -->
         <a-cylinder
           id="musician-registration"
-          position="0.5 1 0.25"
+          position="0.5 0.85 3"
           radius="0.1"
           height="0.1"
           color="#00AA00"
@@ -646,24 +564,23 @@
                                      animation.property: position;
                                    animation.easing: easeOutExpo;
                                    animation.dur: 1000;
-                                   animation.from: 0.5 0.95 0.25;
-                                   animation.to: 0.5 1 0.25;"
+                                   animation.from: 0.5 0.8 3;
+                                   animation.to: 0.5 0.85 3;"
         >
-          <a-entity
-            position="0 0.2 -0.2"
-            text="align: center; color: #a8a8a8; font: roboto; value: Buy Ticket; width: 3"
-            scale="0.75 0.75 1"
-          >
-            <a-entity
-              id="textborder3"
-              geometry="primitive: plane; height:0.24; width:0.8;"
-              position="0 -0.02 0"
-              material="color:#000000"
-            ></a-entity> </a-entity
-        ></a-cylinder>
+        <a-entity
+            position="0 0.3 -0.2"
+            gltf-model="#vip-model"
+            scale="0.05 0.05 0.05"
+            animation__rotation="property: rotation; 
+                                to: 0 360 0; 
+                                dur: 10000;
+                                easing: linear; 
+                                loop: true"
+          ></a-entity>
+        </a-cylinder>
         <a-cylinder
           id="normal-ticket"
-          position="-0.5 1 0.25"
+          position="-0.5 0.85 3"
           radius="0.1"
           height="0.1"
           color="#AA0000"
@@ -671,20 +588,20 @@
                                      animation.property: position;
                                    animation.easing: easeOutExpo;
                                    animation.dur: 1000;
-                                   animation.from: -0.5 0.95 0.25;
-                                   animation.to: -0.5 1 0.25;"
-          ><a-entity
-            position="0 0.2 -0.2"
-            text="align: center; color: #a8a8a8; font: roboto; value: Stage Pass; width: 3"
-            scale="0.75 0.75 1"
-          >
-            <a-entity
-              id="textborder3"
-              geometry="primitive: plane; height:0.24; width:0.8;"
-              position="0 -0.02 0"
-              material="color:#000000"
-            ></a-entity> </a-entity
-        ></a-cylinder>
+                                   animation.from: -0.5 0.8 3;
+                                   animation.to: -0.5 0.85 3;"
+        >
+          <a-entity
+            position="0 0.3 -0.2"
+            gltf-model="#ticket-model"
+            scale="0.6 0.6 0.6"
+            animation__rotation="property: rotation; 
+                                to: 360 0 360; 
+                                dur: 10000;
+                                easing: linear; 
+                                loop: true"
+          ></a-entity>
+        </a-cylinder>
       </a-entity>
 
       <a-sphere
@@ -694,10 +611,11 @@
         color="blue"
       ></a-sphere>
 
+      <!-- Video Display -->
       <a-entity
         id="video-entity"
-        position="0 7 -8"
-        scale="20 10 0"
+        position="0 6 -9"
+        scale="15 7 0"
         visible="false"
       >
         <a-plane material="src: #video"></a-plane>
@@ -747,12 +665,12 @@
       const musicianWall4 = document.querySelector("#musician-wall-4");
       let isMusician = false;
 
-      normalTicket.addEventListener("click", () => {
+      musicianRegistration.addEventListener("click", () => {
         isMusician = false;
         updateWalls();
       });
 
-      musicianRegistration.addEventListener("click", () => {
+      normalTicket.addEventListener("click", () => {
         isMusician = true;
         updateWalls();
       });
