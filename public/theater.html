@@ -192,7 +192,6 @@
         spawn-in-circle="radius:1"
         wasd-controls
         look-controls
-        jump-ability
         kinematic-body
       >
         <a-entity
@@ -290,7 +289,7 @@
         </a-entity>
         <a-entity
           position="0 -0.55 0"
-          text="align: center; color: #a8a8a8; font: roboto; value: Ticket Booth; width: 5"
+          text="align: center; color: #a8a8a8; font: roboto; value: Exit; width: 5"
           scale="0.75 0.75 1"
         >
           <a-entity
@@ -305,7 +304,6 @@
       <!--environment-->
       <!--ground-->
       <a-plane
-        static-body
         position="0 -0.05 0"
         rotation="-90 0 0"
         width="80"
@@ -435,56 +433,27 @@
       ></a-box>
 
       <!-- Stage -->
-      <a-box
-        static-body
-        position="0 0.75 -5"
-        width="20"
-        height="1.5"
-        depth="8"
-        color="#AA0000"
-      ></a-box>
-
       <!-- Stairs -->
-      <a-box
-        static-body
-        position="10 1.25 -6"
-        width="4"
-        height="0.5"
-        depth="1"
-        color="#AAAAAA"
-      ></a-box>
-      <a-box
-        static-body
-        position="10 1 -5"
-        width="4"
-        height="0.5"
-        depth="1"
-        color="#AAAAAA"
-      ></a-box>
-      <a-box
-        static-body
-        position="10 0.75 -4"
-        width="4"
-        height="0.5"
-        depth="1"
-        color="#AAAAAA"
-      ></a-box>
-      <a-box
-        static-body
-        position="10 0.5 -3"
-        width="4"
-        height="0.5"
-        depth="1"
-        color="#AAAAAA"
-      ></a-box>
-      <a-box
-        static-body
-        position="10 0.25 -2"
-        width="4"
-        height="0.5"
-        depth="1"
-        color="#AAAAAA"
-      ></a-box>
+      <a-entity visible="false">
+        <a-box
+          static-body
+          color="#203120"
+          rotation="0 90 0"
+          position="-11 0 -5"
+          scale="2 2.5 0.5"
+          visible="false"
+          material="visible: false"
+        ></a-box>
+        <a-box
+          static-body
+          color="#2e422e"
+          rotation="0 90 0"
+          position="-11 1.5 -5"
+          scale="2 1.5 0.5"
+          visible="false"
+          material="visible: false"
+        ></a-box>
+      </a-entity>
 
       <!-- Ticketing Booth -->
       <a-entity position="25 0 0" gltf-model="#kiosk-model" scale="1 1 1">
@@ -567,7 +536,7 @@
                                    animation.from: 0.5 0.8 3;
                                    animation.to: 0.5 0.85 3;"
         >
-        <a-entity
+          <a-entity
             position="0 0.3 -0.2"
             gltf-model="#vip-model"
             scale="0.05 0.05 0.05"
