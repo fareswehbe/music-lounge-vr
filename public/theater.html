@@ -20,6 +20,7 @@
     <script src="/js/upload-mp3.js"></script>
     <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
     <script src="/js/tap-to-teleport.js" type="text/javascript"></script>
+    <script src="/js/pick-set.js"></script>
     <script>
       // see issue https://github.com/networked-aframe/networked-aframe/issues/267
       NAF.schemas.getComponentsOriginal = NAF.schemas.getComponents;
@@ -108,7 +109,7 @@
           src="https://cdn.glitch.global/f3d8a574-35e4-4e8a-9b01-36a9b5d42679/ground-nm%20(1).jpg?v=1701887195470"
         />
         <a-asset-item
-          id="fence"
+          id="fence-model"
           src="https://cdn.glitch.global/f3d8a574-35e4-4e8a-9b01-36a9b5d42679/metal_fence.glb?v=1701891743748"
         ></a-asset-item>
         <!-- Define the piano notes as audio assets -->
@@ -361,13 +362,6 @@
       <a-box color="orange" position="0 -1 0" onClick="switchToDrums()"></a-box>
     </a-entity> -->
 
-      <!-- DJ button -->
-      <!-- <a-scene>
-      <a-entity id="uploadButton" geometry="primitive: box" material="color: #FF5722" position="3 1.5 5"
-        text="value: Upload MP3" upload-handler></a-entity>
-      <a-entity id="audioPlayer" sound="src: #uploadedAudio"></a-entity>
-    </a-scene> -->
-
       <!-- Invisible walls -->
       <a-box
         static-body
@@ -380,16 +374,16 @@
       >
       </a-box>
       <a-entity scale="0.012 0.012 0.012" position="0 0 3">
-        <a-entity gltf-model="#fence" position="0 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="-207 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="207 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="-414 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="414 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="-621 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="621 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="-828 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="828 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="1035 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="0 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-207 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="207 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-414 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="414 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-621 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="621 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-828 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="828 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="1035 0 0"></a-entity>
       </a-entity>
       <a-box
         static-body
@@ -402,15 +396,15 @@
       >
       </a-box>
       <a-entity scale="0.012 0.012 0.012" position="0 0 48">
-        <a-entity gltf-model="#fence" position="0 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="-207 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="207 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="-414 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="414 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="-621 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="621 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="-828 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="828 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="0 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-207 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="207 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-414 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="414 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-621 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="621 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-828 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="828 0 0"></a-entity>
       </a-entity>
       <a-box
         static-body
@@ -428,25 +422,25 @@
         position="-12.5 0 25"
         rotation="0 90 0"
       >
-        <a-entity gltf-model="#fence" position="0 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="-207 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="207 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="-414 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="414 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="-621 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="621 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="-828 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="828 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="-1035 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="1035 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="-1242 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="1242 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="-1449 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="1449 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="-1656 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="1656 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="-1863 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="1863 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="0 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-207 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="207 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-414 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="414 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-621 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="621 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-828 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="828 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-1035 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="1035 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-1242 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="1242 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-1449 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="1449 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-1656 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="1656 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-1863 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="1863 0 0"></a-entity>
       </a-entity>
       <a-box
         static-body
@@ -464,23 +458,23 @@
         position="12.5 0 25"
         rotation="0 90 0"
       >
-        <a-entity gltf-model="#fence" position="0 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="-207 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="207 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="-414 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="414 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="-621 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="621 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="-828 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="828 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="-1035 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="1035 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="-1242 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="1242 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="-1449 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="1449 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="-1656 0 0"></a-entity>
-        <a-entity gltf-model="#fence" position="-1863 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="0 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-207 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="207 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-414 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="414 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-621 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="621 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-828 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="828 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-1035 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="1035 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-1242 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="1242 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-1449 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="1449 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-1656 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-1863 0 0"></a-entity>
       </a-entity>
       <a-entity
         id="normal-entry"
@@ -558,6 +552,60 @@
           visible="false"
           material="visible: false"
         ></a-box>
+      </a-entity>
+
+      <!-- Stage Control -->
+      <a-entity
+        id="control-set"
+        rotation="0 -90 0"
+        position="-11 0 -1"
+        gltf-model="#control-model"
+        scale="0.01 0.01 0.01"
+      >
+        <a-sphere
+          id="button"
+          position="-100 120 0"
+          radius="10"
+          color="blue"
+        ></a-sphere
+      ></a-entity>
+
+      <!-- Stage Picker-->
+      <a-entity position="0 1 0">
+        <a-cylinder
+          id="stage-picker"
+          position="0 0 -1"
+          radius="0.5"
+          height="0.25"
+          color="grey"
+          pick-set
+        ></a-cylinder>
+        <a-entity
+          id="dj-set"
+          rotation="0 180 0"
+          position="-2.5 -0.75 3"
+          gltf-model="#dj-model"
+          scale="0.75 0.75 0.75"
+          visible="false"
+          upload-handler
+        >
+          <a-entity id="audioPlayer" sound="src: #uploadedAudio"></a-entity
+        ></a-entity>
+        <a-entity
+          id="microphone-set"
+          position="0 1 0"
+          gltf-model="#microphone-model"
+          scale="0.75 0.75 0.75"
+          visible="false"
+        ></a-entity>
+        <a-entity
+          id="podium-set"
+          position="-1 0 0"
+          rotation="0 -30 0"
+          gltf-model="#podium-model"
+          scale="0.75 0.75 0.75"
+          visible="false"
+        ></a-entity>
       </a-entity>
 
       <!-- Ticketing Booth -->
@@ -678,13 +726,6 @@
         </a-cylinder>
       </a-entity>
 
-      <a-sphere
-        id="button"
-        position="0 1.5 -3"
-        radius="0.5"
-        color="blue"
-      ></a-sphere>
-
       <!-- Video Display -->
       <a-entity
         id="video-entity"
@@ -714,6 +755,10 @@
         videoElement.src = fileURL;
         videoEntity.setAttribute("visible", "true");
       });
+    </script>
+
+    <script>
+      var currentModel = 0;
     </script>
 
     <script>
