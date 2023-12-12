@@ -21,6 +21,8 @@
     <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
     <script src="/js/tap-to-teleport.js" type="text/javascript"></script>
     <script src="/js/pick-set.js"></script>
+    <script src="/js/pick-environment.js"></script>
+    <script src="/js/pick-light.js"></script>
     <script>
       // see issue https://github.com/networked-aframe/networked-aframe/issues/267
       NAF.schemas.getComponentsOriginal = NAF.schemas.getComponents;
@@ -112,7 +114,15 @@
           id="fence-model"
           src="https://cdn.glitch.global/f3d8a574-35e4-4e8a-9b01-36a9b5d42679/metal_fence.glb?v=1701891743748"
         ></a-asset-item>
-        <!-- Define the piano notes as audio assets -->
+        <img
+          id="night-sky"
+          src="https://cdn.glitch.me/f3d8a574-35e4-4e8a-9b01-36a9b5d42679/Old%20town%20by%20nite.jpg?v=1702341365016"
+        />
+        <img
+          id="day-sky"
+          src="https://cdn.glitch.me/f3d8a574-35e4-4e8a-9b01-36a9b5d42679/Evening%20in%20Park.jpg?v=1702342804254"
+        />
+        <!-- Define the piano notes as audio assets
         <audio
           id="pianonote1"
           src="https://cdn.glitch.global/f3d8a574-35e4-4e8a-9b01-36a9b5d42679/Bb2.mp3?v=1699460559857"
@@ -125,8 +135,8 @@
           id="pianonote3"
           src="https://cdn.glitch.global/f3d8a574-35e4-4e8a-9b01-36a9b5d42679/B1.mp3?v=1699460567545"
         ></audio>
-        <!-- Define the drum notes as audio assets -->
-        <audio
+        Define the drum notes as audio assets -->
+        <!-- <audio
           id="drumnote1"
           src="https://cdn.glitch.global/f3d8a574-35e4-4e8a-9b01-36a9b5d42679/sounds_tom-4.mp3?v=1699462587216"
         ></audio>
@@ -137,7 +147,7 @@
         <audio
           id="drumnote3"
           src="https://cdn.glitch.global/f3d8a574-35e4-4e8a-9b01-36a9b5d42679/sounds_snare.mp3?v=1699462593131"
-        ></audio>
+        ></audio> -->
 
         <!--insert some ss of the 3 environments-->
         <img
@@ -211,6 +221,7 @@
       <!--player entity-->
       <a-entity
         id="player"
+        shadow="receive:true"
         camera
         networked="template:#avatar-template;attachTemplateToLocal:false;"
         position="25 1.5 10"
@@ -345,13 +356,40 @@
         scale="0.01 0.01 0.01"
       ></a-entity>
 
-      <a-sky
+      <a-sky id="sky" src="#day-sky"></a-sky>
+
+      <!-- Ambient Light -->
+      <a-entity light="type: ambient; color: #BBB"></a-entity>
+
+      <!-- Spot 1-->
+      <a-entity
+        id="light-1"
+        visible="false"
+        light="type: spot; target: #player; color: #FFFFFF; angle: 30; penumbra: 0.1; castShadow: true"
+        position="0 3 1"
+      ></a-entity>
+
+      <!-- Spot 2-->
+      <a-entity
+        id="light-2"
+        visible="false"
+        light="type: spot;  color: #FFFFFF; angle: 30; penumbra: 0.1; castShadow: true"
+        position="-4 5 1"
+      ></a-entity>
+      <a-entity
+        id="light-3"
+        visible="false"
+        light="type: spot;  color: #FFFFFF; angle: 30; penumbra: 0.1; castShadow: true"
+        position="4 5 1"
+      ></a-entity>
+
+      <!-- <a-sky
         radius="200"
         theta-length="110"
         class="environment"
         material="shader: skyshader; sunPosition: 7.760 8.770 -8.240"
         geometry=""
-      ></a-sky>
+      ></a-sky> -->
 
       <!--components-->
       <!-- Music buttons -->
@@ -567,8 +605,23 @@
           position="-100 120 0"
           radius="10"
           color="blue"
-        ></a-sphere
-      ></a-entity>
+        ></a-sphere>
+        <a-sphere
+          pick-environment
+          id="environment-btn"
+          position="0 120 -30"
+          radius="10"
+          color="red"
+        ></a-sphere>
+        <a-sphere
+          pick-light
+          id="light-btn"
+          position="100 120 0"
+          radius="10"
+          color="green"
+        ></a-sphere>
+        ></a-entity
+      >
 
       <!-- Stage Picker-->
       <a-entity position="0 1 0">
@@ -759,6 +812,8 @@
 
     <script>
       var currentModel = 0;
+      var currentEnvironment = 0;
+      var currentLight = 0;
     </script>
 
     <script>
