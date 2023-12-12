@@ -54,7 +54,7 @@
     <button id="clapButton">Clap</button>
     <button id="booButton">Boo</button>
     <a-scene
-      physics="debug: true; gravity:0"
+      physics="debug: false; gravity:0"
       joystick
       networked-scene="
       room: basic-audio;
@@ -221,7 +221,7 @@
       <!--player entity-->
       <a-entity
         id="player"
-        shadow="receive:true"
+        shadow="cast:true; receive:true"
         camera
         networked="template:#avatar-template;attachTemplateToLocal:false;"
         position="25 1.5 10"
@@ -353,13 +353,14 @@
       <a-entity
         position="0 1.5 0"
         gltf-model="#stage-model"
+        shadow="cast:true; receive:true"
         scale="0.01 0.01 0.01"
       ></a-entity>
 
       <a-sky id="sky" src="#day-sky"></a-sky>
 
       <!-- Ambient Light -->
-      <a-entity light="type: ambient; color: #BBB"></a-entity>
+      <a-entity light="type: ambient; color: #BBB; castShadow: true"></a-entity>
 
       <!-- Spot 1-->
       <a-entity
@@ -383,23 +384,6 @@
         position="4 5 1"
       ></a-entity>
 
-      <!-- <a-sky
-        radius="200"
-        theta-length="110"
-        class="environment"
-        material="shader: skyshader; sunPosition: 7.760 8.770 -8.240"
-        geometry=""
-      ></a-sky> -->
-
-      <!--components-->
-      <!-- Music buttons -->
-      <!-- <a-entity position="-1 1.5 5">
-      <a-box color="red" position="-1 0 0" onClick="playNote1()"></a-box>
-      <a-box color="green" position="0 0 0" onClick="playNote2()"></a-box>
-      <a-box color="blue" position="1 0 0" onClick="playNote3()"></a-box>
-      <a-box color="orange" position="0 -1 0" onClick="switchToDrums()"></a-box>
-    </a-entity> -->
-
       <!-- Invisible walls -->
       <a-box
         static-body
@@ -412,16 +396,16 @@
       >
       </a-box>
       <a-entity scale="0.012 0.012 0.012" position="0 0 3">
-        <a-entity gltf-model="#fence-model" position="0 0 0"></a-entity>
-        <a-entity gltf-model="#fence-model" position="-207 0 0"></a-entity>
-        <a-entity gltf-model="#fence-model" position="207 0 0"></a-entity>
-        <a-entity gltf-model="#fence-model" position="-414 0 0"></a-entity>
-        <a-entity gltf-model="#fence-model" position="414 0 0"></a-entity>
-        <a-entity gltf-model="#fence-model" position="-621 0 0"></a-entity>
-        <a-entity gltf-model="#fence-model" position="621 0 0"></a-entity>
-        <a-entity gltf-model="#fence-model" position="-828 0 0"></a-entity>
-        <a-entity gltf-model="#fence-model" position="828 0 0"></a-entity>
-        <a-entity gltf-model="#fence-model" position="1035 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="0 0 0" shadow="cast:true; receive:true"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-207 0 0" shadow="cast:true; receive:true"></a-entity>
+        <a-entity gltf-model="#fence-model" position="207 0 0" shadow="cast:true; receive:true"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-414 0 0" shadow="cast:true; receive:true"></a-entity>
+        <a-entity gltf-model="#fence-model" position="414 0 0" shadow="cast:true; receive:true"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-621 0 0" shadow="cast:true; receive:true"></a-entity>
+        <a-entity gltf-model="#fence-model" position="621 0 0" shadow="cast:true; receive:true"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-828 0 0" shadow="cast:true; receive:true"></a-entity>
+        <a-entity gltf-model="#fence-model" position="828 0 0" shadow="cast:true; receive:true"></a-entity>
+        <a-entity gltf-model="#fence-model" position="1035 0 0" shadow="cast:true; receive:true"></a-entity>
       </a-entity>
       <a-box
         static-body
@@ -434,15 +418,15 @@
       >
       </a-box>
       <a-entity scale="0.012 0.012 0.012" position="0 0 48">
-        <a-entity gltf-model="#fence-model" position="0 0 0"></a-entity>
-        <a-entity gltf-model="#fence-model" position="-207 0 0"></a-entity>
-        <a-entity gltf-model="#fence-model" position="207 0 0"></a-entity>
-        <a-entity gltf-model="#fence-model" position="-414 0 0"></a-entity>
-        <a-entity gltf-model="#fence-model" position="414 0 0"></a-entity>
-        <a-entity gltf-model="#fence-model" position="-621 0 0"></a-entity>
-        <a-entity gltf-model="#fence-model" position="621 0 0"></a-entity>
-        <a-entity gltf-model="#fence-model" position="-828 0 0"></a-entity>
-        <a-entity gltf-model="#fence-model" position="828 0 0"></a-entity>
+        <a-entity gltf-model="#fence-model" position="0 0 0" shadow="cast:true; receive:true"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-207 0 0" shadow="cast:true; receive:true"></a-entity>
+        <a-entity gltf-model="#fence-model" position="207 0 0" shadow="cast:true; receive:true"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-414 0 0" shadow="cast:true; receive:true"></a-entity>
+        <a-entity gltf-model="#fence-model" position="414 0 0" shadow="cast:true; receive:true"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-621 0 0" shadow="cast:true; receive:true"></a-entity>
+        <a-entity gltf-model="#fence-model" position="621 0 0" shadow="cast:true; receive:true"></a-entity>
+        <a-entity gltf-model="#fence-model" position="-828 0 0" shadow="cast:true; receive:true"></a-entity>
+        <a-entity gltf-model="#fence-model" position="828 0 0" shadow="cast:true; receive:true"></a-entity>
       </a-entity>
       <a-box
         static-body
@@ -529,6 +513,111 @@
         position="13 0 1"
         scale="1 1 1"
         rotation="0 90 0"
+      ></a-entity>
+      <a-entity
+        gltf-model="#redvelvet-model"
+        position="15.5 0 3"
+        scale="1 1 1"
+        rotation="0 0 0"
+        static-body
+      ></a-entity>
+      <a-entity
+        gltf-model="#redvelvet-model"
+        position="17 0 3"
+        scale="1 1 1"
+        rotation="0 0 0"
+        static-body
+      ></a-entity>
+      <a-entity
+        gltf-model="#redvelvet-model"
+        position="18.5 0 3"
+        scale="1 1 1"
+        rotation="0 0 0"
+        static-body
+      ></a-entity>
+      <a-entity
+        gltf-model="#redvelvet-model"
+        position="20 0 3"
+        scale="1 1 1"
+        rotation="0 0 0"
+        static-body
+      ></a-entity>
+      <a-entity
+        gltf-model="#redvelvet-model"
+        position="15.5 0 6.5"
+        scale="1 1 1"
+        rotation="0 0 0"
+        static-body
+      ></a-entity>
+      <a-entity
+        gltf-model="#redvelvet-model"
+        position="17 0 6.5"
+        scale="1 1 1"
+        rotation="0 0 0"
+        static-body
+      ></a-entity>
+      <a-entity
+        gltf-model="#redvelvet-model"
+        position="18.5 0 6.5"
+        scale="1 1 1"
+        rotation="0 0 0"
+        static-body
+      ></a-entity>
+      <a-entity
+        gltf-model="#redvelvet-model"
+        position="20 0 6.5"
+        scale="1 1 1"
+        rotation="0 0 0"
+        static-body
+      ></a-entity>
+      <a-entity
+        gltf-model="#redvelvet-model"
+        position="15.5 0 0.5"
+        scale="1 1 1"
+        rotation="0 0 0"
+        static-body
+      ></a-entity>
+      <a-entity
+        gltf-model="#redvelvet-model"
+        position="17 0 0.5"
+        scale="1 1 1"
+        rotation="0 0 0"
+        static-body
+      ></a-entity>
+      <a-entity
+        gltf-model="#redvelvet-model"
+        position="14 0 0.5"
+        scale="1 1 1"
+        rotation="0 0 0"
+        static-body
+      ></a-entity>
+      <a-entity
+        gltf-model="#redvelvet-model"
+        position="18.5 0 0.5"
+        scale="1 1 1"
+        rotation="0 0 0"
+        static-body
+      ></a-entity>
+      <a-entity
+        gltf-model="#redvelvet-model"
+        position="20 0 0.5"
+        scale="1 1 1"
+        rotation="0 0 0"
+        static-body
+      ></a-entity>
+      <a-entity
+        gltf-model="#redvelvet-model"
+        position="21.5 0 0.5"
+        scale="1 1 1"
+        rotation="0 0 0"
+        static-body
+      ></a-entity>
+      <a-entity
+        gltf-model="#redvelvet-model"
+        position="12.5 0 0.5"
+        scale="1 1 1"
+        rotation="0 0 0"
+        static-body
       ></a-entity>
       <a-box
         static-body
