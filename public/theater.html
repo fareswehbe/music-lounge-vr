@@ -360,13 +360,13 @@
       <a-sky id="sky" src="#day-sky"></a-sky>
 
       <!-- Ambient Light -->
-      <a-entity light="type: ambient; color: #BBB; castShadow: true"></a-entity>
+      <a-entity light="type: ambient; color: #BBB"></a-entity>
 
       <!-- Spot 1-->
       <a-entity
         id="light-1"
-        visible="false"
-        light="type: spot; target: #player; color: #FFFFFF; angle: 30; penumbra: 0.1; castShadow: true"
+        visible="true"
+        light="type: spot; target: #player; color: #FFFFFF; angle: 30; penumbra: 0.1"
         position="0 3 1"
       ></a-entity>
 
@@ -374,13 +374,13 @@
       <a-entity
         id="light-2"
         visible="false"
-        light="type: spot;  color: #FFFFFF; angle: 30; penumbra: 0.1; castShadow: true"
+        light="type: spot;  color: #FFFFFF; angle: 30; penumbra: 0.1"
         position="-4 5 1"
       ></a-entity>
       <a-entity
         id="light-3"
         visible="false"
-        light="type: spot;  color: #FFFFFF; angle: 30; penumbra: 0.1; castShadow: true"
+        light="type: spot;  color: #FFFFFF; angle: 30; penumbra: 0.1"
         position="4 5 1"
       ></a-entity>
 
@@ -396,16 +396,56 @@
       >
       </a-box>
       <a-entity scale="0.012 0.012 0.012" position="0 0 3">
-        <a-entity gltf-model="#fence-model" position="0 0 0" shadow="cast:true; receive:true"></a-entity>
-        <a-entity gltf-model="#fence-model" position="-207 0 0" shadow="cast:true; receive:true"></a-entity>
-        <a-entity gltf-model="#fence-model" position="207 0 0" shadow="cast:true; receive:true"></a-entity>
-        <a-entity gltf-model="#fence-model" position="-414 0 0" shadow="cast:true; receive:true"></a-entity>
-        <a-entity gltf-model="#fence-model" position="414 0 0" shadow="cast:true; receive:true"></a-entity>
-        <a-entity gltf-model="#fence-model" position="-621 0 0" shadow="cast:true; receive:true"></a-entity>
-        <a-entity gltf-model="#fence-model" position="621 0 0" shadow="cast:true; receive:true"></a-entity>
-        <a-entity gltf-model="#fence-model" position="-828 0 0" shadow="cast:true; receive:true"></a-entity>
-        <a-entity gltf-model="#fence-model" position="828 0 0" shadow="cast:true; receive:true"></a-entity>
-        <a-entity gltf-model="#fence-model" position="1035 0 0" shadow="cast:true; receive:true"></a-entity>
+        <a-entity
+          gltf-model="#fence-model"
+          position="0 0 0"
+          shadow="cast:true; receive:true"
+        ></a-entity>
+        <a-entity
+          gltf-model="#fence-model"
+          position="-207 0 0"
+          shadow="cast:true; receive:true"
+        ></a-entity>
+        <a-entity
+          gltf-model="#fence-model"
+          position="207 0 0"
+          shadow="cast:true; receive:true"
+        ></a-entity>
+        <a-entity
+          gltf-model="#fence-model"
+          position="-414 0 0"
+          shadow="cast:true; receive:true"
+        ></a-entity>
+        <a-entity
+          gltf-model="#fence-model"
+          position="414 0 0"
+          shadow="cast:true; receive:true"
+        ></a-entity>
+        <a-entity
+          gltf-model="#fence-model"
+          position="-621 0 0"
+          shadow="cast:true; receive:true"
+        ></a-entity>
+        <a-entity
+          gltf-model="#fence-model"
+          position="621 0 0"
+          shadow="cast:true; receive:true"
+        ></a-entity>
+        <a-entity
+          gltf-model="#fence-model"
+          position="-828 0 0"
+          shadow="cast:true; receive:true"
+        ></a-entity>
+        <a-entity
+          gltf-model="#fence-model"
+          position="828 0 0"
+          shadow="cast:true; receive:true"
+        ></a-entity>
+        <a-entity
+          gltf-model="#fence-model"
+          position="1035 0 0"
+          shadow="cast:true; receive:true"
+        ></a-entity>
       </a-entity>
       <a-box
         static-body
@@ -418,15 +458,51 @@
       >
       </a-box>
       <a-entity scale="0.012 0.012 0.012" position="0 0 48">
-        <a-entity gltf-model="#fence-model" position="0 0 0" shadow="cast:true; receive:true"></a-entity>
-        <a-entity gltf-model="#fence-model" position="-207 0 0" shadow="cast:true; receive:true"></a-entity>
-        <a-entity gltf-model="#fence-model" position="207 0 0" shadow="cast:true; receive:true"></a-entity>
-        <a-entity gltf-model="#fence-model" position="-414 0 0" shadow="cast:true; receive:true"></a-entity>
-        <a-entity gltf-model="#fence-model" position="414 0 0" shadow="cast:true; receive:true"></a-entity>
-        <a-entity gltf-model="#fence-model" position="-621 0 0" shadow="cast:true; receive:true"></a-entity>
-        <a-entity gltf-model="#fence-model" position="621 0 0" shadow="cast:true; receive:true"></a-entity>
-        <a-entity gltf-model="#fence-model" position="-828 0 0" shadow="cast:true; receive:true"></a-entity>
-        <a-entity gltf-model="#fence-model" position="828 0 0" shadow="cast:true; receive:true"></a-entity>
+        <a-entity
+          gltf-model="#fence-model"
+          position="0 0 0"
+          shadow="cast:true; receive:true"
+        ></a-entity>
+        <a-entity
+          gltf-model="#fence-model"
+          position="-207 0 0"
+          shadow="cast:true; receive:true"
+        ></a-entity>
+        <a-entity
+          gltf-model="#fence-model"
+          position="207 0 0"
+          shadow="cast:true; receive:true"
+        ></a-entity>
+        <a-entity
+          gltf-model="#fence-model"
+          position="-414 0 0"
+          shadow="cast:true; receive:true"
+        ></a-entity>
+        <a-entity
+          gltf-model="#fence-model"
+          position="414 0 0"
+          shadow="cast:true; receive:true"
+        ></a-entity>
+        <a-entity
+          gltf-model="#fence-model"
+          position="-621 0 0"
+          shadow="cast:true; receive:true"
+        ></a-entity>
+        <a-entity
+          gltf-model="#fence-model"
+          position="621 0 0"
+          shadow="cast:true; receive:true"
+        ></a-entity>
+        <a-entity
+          gltf-model="#fence-model"
+          position="-828 0 0"
+          shadow="cast:true; receive:true"
+        ></a-entity>
+        <a-entity
+          gltf-model="#fence-model"
+          position="828 0 0"
+          shadow="cast:true; receive:true"
+        ></a-entity>
       </a-entity>
       <a-box
         static-body
@@ -688,7 +764,46 @@
         position="-11 0 -1"
         gltf-model="#control-model"
         scale="0.01 0.01 0.01"
+        shadow="cast:true; receive:true"
       >
+        <a-entity
+          position="-100 140 0"
+          rotation="0 40 0"
+          text="align: center; color: #a8a8a8; font: roboto; value: Screen; width: 5"
+          scale="50 50 50"
+        >
+          <a-entity
+            id="textborder3"
+            geometry="primitive: plane; height:0.24; width:1;"
+            position="0 0 0"
+            material="color:#000000"
+          ></a-entity>
+        </a-entity>
+        <a-entity
+          position="0 140 -30"
+          text="align: center; color: #a8a8a8; font: roboto; value: Sky; width: 5"
+          scale="50 50 50"
+        >
+          <a-entity
+            id="textborder3"
+            geometry="primitive: plane; height:0.24; width:1;"
+            position="0 0 0"
+            material="color:#000000"
+          ></a-entity>
+        </a-entity>
+        <a-entity
+          position="100 140 0"
+          rotation="0 -40 0"
+          text="align: center; color: #a8a8a8; font: roboto; value: Light; width: 5"
+          scale="50 50 50"
+        >
+          <a-entity
+            id="textborder3"
+            geometry="primitive: plane; height:0.24; width:1;"
+            position="0 0 0"
+            material="color:#000000"
+          ></a-entity>
+        </a-entity>
         <a-sphere
           id="button"
           position="-100 120 0"

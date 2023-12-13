@@ -316,8 +316,8 @@
           <a-entity
             id="linkToTheater2"
             geometry="primitive: plane"
-            link="href: theater.html; image: #beach"
-            material="shader: portal; side: double; pano: #beach"
+            link="href: theater.html; "
+            material="shader: portal; side: double; "
             position="0 0 0.01"
             scale="1.2 .8 1"
             event-set__mouseenter="material.color:#e60000; _target:#border"
@@ -357,8 +357,8 @@
           <a-entity
             id="linkToTheater"
             geometry="primitive: plane"
-            link="href: theater.html; image: #picnic"
-            material="shader: portal; side: double; pano: #picnic"
+            link="href: theater.html; "
+            material="shader: portal; side: double; "
             position="0 0 0.01"
             scale="1.2 .8 1"
             event-set__mouseenter="material.color:#00fbff; _target:#border3"
@@ -372,7 +372,7 @@
           >
             <a-entity
               id="textborder3"
-              geometry="primitive: plane; height:0.22; width:0.6;"
+              geometry="primitive: plane; height:0.22; width:1;"
               position="0 -0.02 0"
               material="color:#000000"
             ></a-entity>
@@ -569,20 +569,7 @@
           scale="1.2 1.2 1.2"
           shadow="cast:true; receive:true"
         ></a-entity>
-        <a-entity
-          gltf-model="#chair"
-          position="-7.5 0 -6.5"
-          rotation="0 70 0"
-          scale="1.2 1.2 1.2"
-          shadow="cast:true; receive:true"
-        ></a-entity>
-        <a-entity
-          gltf-model="#desk"
-          position="0.3 -0.1 -11"
-          rotation="0 180 0"
-          scale="0.7 0.7 0.7"
-          shadow="cast:true; receive:true"
-        >
+
           <!--welcome text-->
           <a-entity
             text__welcome="align: center; baseline: bottom; color: #000000; font: exo2semibold; value: Welcome to Music Lounge VR; width: 9.87; side: double"
